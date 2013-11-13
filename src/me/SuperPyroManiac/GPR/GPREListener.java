@@ -66,7 +66,7 @@ public class GPREListener
 
       if (event.getLine(1).isEmpty()) {
     		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
-      		signPlayer.sendMessage(ChatColor.AQUA + "You need to enter the price on the second line.");
+      		signPlayer.sendMessage(ChatColor.AQUA + "You need to enter the price on the second line!");
         event.setCancelled(true);
         return;
       }
@@ -89,7 +89,7 @@ public class GPREListener
         if (signPlayer.getName().equalsIgnoreCase(signClaim.getOwnerName()))
         {
           event.setLine(0, this.plugin.signNameLong);
-          event.setLine(1, "FOR SALE");
+          event.setLine(1, ChatColor.GREEN + "FOR SALE");
           event.setLine(2, signPlayer.getName());
           event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
         }
@@ -111,14 +111,14 @@ public class GPREListener
       }
       else if ((signPlayer.getName().equalsIgnoreCase(signClaim.parent.getOwnerName())) || (signClaim.isManager(signPlayer.getName()))) {
         event.setLine(0, this.plugin.signNameLong);
-        event.setLine(1, "FOR LEASE");
+        event.setLine(1, ChatColor.GREEN + "FOR LEASE");
         event.setLine(2, signPlayer.getName());
         event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
       }
       else if ((signClaim.parent.isAdminClaim()) && (signPlayer.hasPermission("GPRealEstate.Adminclaim")))
       {
         event.setLine(0, this.plugin.signNameLong);
-        event.setLine(1, "FOR LEASE");
+        event.setLine(1, ChatColor.GREEN + "FOR LEASE");
         event.setLine(2, "Server");
         event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
       }
@@ -174,6 +174,7 @@ public class GPREListener
             {
         	  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
           	  signPlayer.sendMessage(ChatColor.AQUA + "You already own this claim!");
+          	  return;
             }
 
           }
@@ -222,7 +223,7 @@ public class GPREListener
 
           }
 
-          if (sign.getLine(1).equalsIgnoreCase("FOR SALE"))
+          if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR SALE"))
           {
             try {
               gp.dataStore.changeClaimOwner(signClaim, signPlayer.getName());
@@ -245,7 +246,7 @@ public class GPREListener
             event.getClickedBlock().setType(Material.AIR);
           }
 
-          if (sign.getLine(1).equalsIgnoreCase("FOR LEASE"))
+          if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR LEASE"))
           {
             signClaim.clearPermissions();
 
