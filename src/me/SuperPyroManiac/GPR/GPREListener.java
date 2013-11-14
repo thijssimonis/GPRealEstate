@@ -51,21 +51,21 @@ public class GPREListener
       Claim signClaim = gp.dataStore.getClaimAt(signLocation, false, null);
 
       if (signClaim == null) {
-  		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+  		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
   		signPlayer.sendMessage(ChatColor.AQUA + "The sign you placed is not inside a claim!");
         event.setCancelled(true);
         return;
       }
 
       if (!GPRealEstate.perms.has(signPlayer, "GPRealEstate.sell")) {
-    		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		signPlayer.sendMessage(ChatColor.AQUA + "You do not have permission to sell claims!");
         event.setCancelled(true);
         return;
       }
 
       if (event.getLine(1).isEmpty()) {
-    		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		signPlayer.sendMessage(ChatColor.AQUA + "You need to enter the price on the second line!");
         event.setCancelled(true);
         return;
@@ -78,7 +78,7 @@ public class GPREListener
 		double d = Double.parseDouble(event.getLine(1));
       }
       catch (NumberFormatException e) {
-    		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		signPlayer.sendMessage(ChatColor.AQUA + "You need to enter a valid number on the second line.");
         event.setCancelled(true);
         return;
@@ -97,13 +97,13 @@ public class GPREListener
         {
           if ((signClaim.isAdminClaim()) && (signPlayer.hasPermission("GPRealEstate.Adminclaim")))
           {
-    		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		signPlayer.sendMessage(ChatColor.AQUA + "You cannot sell admin claims! Only can lease admin subdivides.");
             event.setCancelled(true);
             return;
           }
 
-  		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+  		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
   		signPlayer.sendMessage(ChatColor.AQUA + "You can only sell claims you own!");
           event.setCancelled(true);
         }
@@ -124,7 +124,7 @@ public class GPREListener
       }
       else
       {
-    		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		signPlayer.sendMessage(ChatColor.AQUA + "You can only lease subclaims you own!");
         event.setCancelled(true);
         return;
@@ -146,7 +146,7 @@ public class GPREListener
         {
           Player signPlayer = event.getPlayer();
           if (!GPRealEstate.perms.has(signPlayer, "GPRealEstate.buy")) {
-      		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+      		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		signPlayer.sendMessage(ChatColor.AQUA + "You do not have permission to buy claims!");
             event.setCancelled(true);
             return;
@@ -157,7 +157,7 @@ public class GPREListener
           Claim signClaim = gp.dataStore.getClaimAt(signLocation, false, null);
 
           if (signClaim == null) {
-    		signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		signPlayer.sendMessage(ChatColor.AQUA + "This sign is no longer within a claim!");
             return;
           }
@@ -165,14 +165,14 @@ public class GPREListener
           if (signClaim.parent == null)
           {
             if ((!sign.getLine(2).equalsIgnoreCase(signClaim.getOwnerName())) && (!signClaim.isAdminClaim())) {
-      		  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+      		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		  signPlayer.sendMessage(ChatColor.AQUA + "The listed player no longer has the rights to sell this claim!");
               event.getClickedBlock().setType(Material.AIR);
               return;
             }
             if (signClaim.getOwnerName().equalsIgnoreCase(signPlayer.getName()))
             {
-        	  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+        	  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
           	  signPlayer.sendMessage(ChatColor.AQUA + "You already own this claim!");
           	  return;
             }
@@ -182,14 +182,14 @@ public class GPREListener
           {
             if ((!sign.getLine(2).equalsIgnoreCase(signClaim.parent.getOwnerName())) && (!signClaim.isManager(sign.getLine(2))) && (!signClaim.parent.isAdminClaim()))
             {
-      		  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+      		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		  signPlayer.sendMessage(ChatColor.AQUA + "The listed player no longer has the rights to lease this claim!");
               event.getClickedBlock().setType(Material.AIR);
               return;
             }
             if (signClaim.parent.getOwnerName().equalsIgnoreCase(signPlayer.getName()))
             {
-        		  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+        		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
           		  signPlayer.sendMessage(ChatColor.AQUA + "You already own this claim!");
               return;
             }
@@ -199,14 +199,14 @@ public class GPREListener
           String[] signDelimit = sign.getLine(3).split(" ");
           Double signCost = Double.valueOf(Double.valueOf(signDelimit[0].trim()).doubleValue());
           if (!GPRealEstate.econ.has(signPlayer.getName(), signCost.doubleValue())) {
-      		  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+      		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		  signPlayer.sendMessage(ChatColor.AQUA + "You do not have enough money!");
             return;
           }
 
           EconomyResponse ecoresp = GPRealEstate.econ.withdrawPlayer(signPlayer.getName(), signCost.doubleValue());
           if (!ecoresp.transactionSuccess()) {
-      		  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+      		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		  signPlayer.sendMessage(ChatColor.RED + "ERROR: " + ChatColor.AQUA + "Could not withdraw money!");
             return;
           }
@@ -215,7 +215,7 @@ public class GPREListener
           {
             ecoresp = GPRealEstate.econ.depositPlayer(sign.getLine(2), signCost.doubleValue());
             if (!ecoresp.transactionSuccess()) {
-      		  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+      		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
       		  signPlayer.sendMessage(ChatColor.RED + "ERROR: " + ChatColor.AQUA + "Could not transfer money, Refunding Player!");
               GPRealEstate.econ.depositPlayer(signPlayer.getName(), signCost.doubleValue());
               return;
@@ -234,10 +234,10 @@ public class GPREListener
             }
 
             if (signClaim.getOwnerName().equalsIgnoreCase(signPlayer.getName())) {
-        		  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+        		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
           		  signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this claim!");
             } else {
-        		  signPlayer.sendMessage(ChatColor.BLUE + "-------" + ChatColor.GOLD + this.plugin.signNameLong + ChatColor.BLUE + "-------");
+        		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
           		  signPlayer.sendMessage(ChatColor.RED + "ERROR: " + ChatColor.AQUA + "Cannot purchase claim!");
               return;
             }

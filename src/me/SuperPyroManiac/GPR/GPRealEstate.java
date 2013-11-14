@@ -26,7 +26,7 @@ public class GPRealEstate extends JavaPlugin
     {
       this.log.info("Vault detected and enabled.");
       if (setupEconomy()) {
-        this.log.info("Vault has detected and connected to " + econ.getName());
+        this.log.info("Vault is using " + econ.getName() + " as the economy plugin.");
       } else {
         this.log.warning("No compatible economy plugin detected [Vault].");
         this.log.warning("Disabling plugin.");
@@ -34,7 +34,7 @@ public class GPRealEstate extends JavaPlugin
         return;
       }
       if (setupPermissions()) {
-        this.log.info("Vault has detected and connected to " + perms.getName());
+        this.log.info("Vault is using " + perms.getName() + " for the permissions.");
       } else {
         this.log.warning("No compatible permissions plugin detected [Vault].");
         this.log.warning("Disabling plugin.");
@@ -42,18 +42,12 @@ public class GPRealEstate extends JavaPlugin
         return;
       }
     }
-    this.log.info("V" + getDescription().getVersion() + " Enabled!");
 
     saveDefaultConfig();
     this.signName = ("[" + getConfig().getString("SignShort") + "]");
     this.signNameLong = ("[" + getConfig().getString("SignLong") + "]");
     this.log.info("RealEstate Signs have been set to use " + this.signName + " or " + this.signNameLong);
     saveConfig();
-  }
-
-  public void onDisable()
-  {
-    this.log.info("V" + getDescription().getVersion() + " Disabled!");
   }
 
   private boolean checkVault()
