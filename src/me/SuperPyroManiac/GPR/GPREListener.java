@@ -249,7 +249,7 @@ public class GPREListener
           if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR LEASE"))
           {
             signClaim.clearPermissions();
-
+            signClaim.clearManagers();
             signClaim.addManager(signPlayer.getName());
             signClaim.setPermission(signPlayer.getName(), ClaimPermission.Build);
             gp.dataStore.saveClaim(signClaim);
