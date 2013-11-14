@@ -242,8 +242,12 @@ public class GPREListener
               return;
             }
             gp.dataStore.saveClaim(signClaim);
-
-            event.getClickedBlock().setType(Material.AIR);
+            
+            event.getClickedBlock().breakNaturally();
+            //event.getClickedBlock().setType(Material.AIR);
+            //sign.setLine(1, ChatColor.YELLOW + "SOLD");
+            //sign.update();
+            //return;
           }
 
           if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR LEASE") || sign.getLine(1).equalsIgnoreCase("FOR LEASE"))
@@ -254,7 +258,13 @@ public class GPREListener
             signClaim.setPermission(signPlayer.getName(), ClaimPermission.Build);
             gp.dataStore.saveClaim(signClaim);
             
-           event.getClickedBlock().setType(Material.AIR);
+            event.getClickedBlock().breakNaturally();
+  		    signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
+  		    signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this subclaim!");
+           //event.getClickedBlock().setType(Material.AIR);
+           //sign.setLine(1, ChatColor.YELLOW + "SOLD");
+           //sign.update();
+           //return;
           }
         }
       }
