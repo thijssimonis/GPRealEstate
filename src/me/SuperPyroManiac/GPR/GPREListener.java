@@ -93,7 +93,7 @@ public class GPREListener
           event.setLine(2, signPlayer.getName());
           event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
   		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
-  		signPlayer.sendMessage(ChatColor.AQUA + "This caim is now for sale! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
+  		signPlayer.sendMessage(ChatColor.AQUA + "This caim is now for sale! Price: " + ChatColor.GREEN + signCost + " " + GPRealEstate.econ.currencyNamePlural());
         }
         else
         {
@@ -117,7 +117,7 @@ public class GPREListener
         event.setLine(2, signPlayer.getName());
         event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
 		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
-  		signPlayer.sendMessage(ChatColor.AQUA + "This sublcaim is now for lease! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
+  		signPlayer.sendMessage(ChatColor.AQUA + "This sublcaim is now for lease! Price: " + ChatColor.GREEN + signCost + " " + GPRealEstate.econ.currencyNamePlural());
       }
       else if ((signClaim.parent.isAdminClaim()) && (signPlayer.hasPermission("GPRealEstate.Adminclaim")))
       {
