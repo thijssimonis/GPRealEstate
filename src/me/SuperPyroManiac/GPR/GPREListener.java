@@ -92,6 +92,8 @@ public class GPREListener
           event.setLine(1, ChatColor.GREEN + "FOR SALE");
           event.setLine(2, signPlayer.getName());
           event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
+  		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
+  		signPlayer.sendMessage(ChatColor.AQUA + "This caim is now for sale! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
         }
         else
         {
@@ -114,6 +116,8 @@ public class GPREListener
         event.setLine(1, ChatColor.GREEN + "FOR LEASE");
         event.setLine(2, signPlayer.getName());
         event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
+		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
+  		signPlayer.sendMessage(ChatColor.AQUA + "This sublcaim is now for lease! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
       }
       else if ((signClaim.parent.isAdminClaim()) && (signPlayer.hasPermission("GPRealEstate.Adminclaim")))
       {
@@ -121,6 +125,8 @@ public class GPREListener
         event.setLine(1, ChatColor.GREEN + "FOR LEASE");
         event.setLine(2, "Server");
         event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
+		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
+  		signPlayer.sendMessage(ChatColor.AQUA + "This admin sublcaim is now for lease! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
       }
       else
       {
@@ -244,10 +250,6 @@ public class GPREListener
             gp.dataStore.saveClaim(signClaim);
             
             event.getClickedBlock().breakNaturally();
-            //event.getClickedBlock().setType(Material.AIR);
-            //sign.setLine(1, ChatColor.YELLOW + "SOLD");
-            //sign.update();
-            //return;
           }
 
           if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR LEASE") || sign.getLine(1).equalsIgnoreCase("FOR LEASE"))
@@ -261,10 +263,6 @@ public class GPREListener
             event.getClickedBlock().breakNaturally();
   		    signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
   		    signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this subclaim!");
-           //event.getClickedBlock().setType(Material.AIR);
-           //sign.setLine(1, ChatColor.YELLOW + "SOLD");
-           //sign.update();
-           //return;
           }
         }
       }
