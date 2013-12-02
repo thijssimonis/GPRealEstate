@@ -8,6 +8,7 @@ import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -37,6 +38,17 @@ public class GPREListener
   @EventHandler
   public void onSignBreak(BlockBreakEvent event)
   {
+	  Player signPlayer = event.getPlayer();
+	  Block b = event.getBlock();
+      Material type = b.getType();
+      if ((type == Material.SIGN_POST) || (type == Material.WALL_SIGN)){
+      Sign sign = (Sign)event.getBlock();
+
+      if ((sign.getLine(0).equalsIgnoreCase(this.plugin.signName)) || (sign.getLine(0).equalsIgnoreCase(this.plugin.signNameLong))){
+    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
+      		signPlayer.sendMessage(ChatColor.AQUA + "Claim is no longer for sale.");    	  
+      }
+    }  
   }
 
   @EventHandler
