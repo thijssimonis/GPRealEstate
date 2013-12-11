@@ -8,13 +8,11 @@ import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.PluginManager;
@@ -35,21 +33,21 @@ public class GPREListener
     pm.registerEvents(this, this.plugin);
   }
 
-  @EventHandler
-  public void onSignBreak(BlockBreakEvent event)
-  {
-	  Player signPlayer = event.getPlayer();
-	  Block b = event.getBlock();
-      Material type = b.getType();
-      if ((type == Material.SIGN_POST) || (type == Material.WALL_SIGN)){
-      Sign sign = (Sign)event.getBlock();
-
-      if ((sign.getLine(0).equalsIgnoreCase(this.plugin.signName)) || (sign.getLine(0).equalsIgnoreCase(this.plugin.signNameLong))){
-    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
-      		signPlayer.sendMessage(ChatColor.AQUA + "Claim is no longer for sale.");    	  
-      }
-    }  
-  }
+// @EventHandler
+// public void onSignBreak(BlockBreakEvent event)
+// {
+//	  Player signPlayer = event.getPlayer();
+//	  Block b = event.getBlock();
+//     Material type = b.getType();
+//      if ((type == Material.SIGN_POST) || (type == Material.WALL_SIGN)){
+//      Sign sign = (Sign)event.getBlock();
+//
+//      if ((sign.getLine(0).equalsIgnoreCase(this.plugin.signName)) || (sign.getLine(0).equalsIgnoreCase(this.plugin.signNameLong))){
+//    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
+//      		signPlayer.sendMessage(ChatColor.AQUA + "Claim is no longer for sale.");    	  
+//      }
+//    }  
+//  }
 
   @EventHandler
   public void onSignChange(SignChangeEvent event)
@@ -253,7 +251,7 @@ public class GPREListener
 
             if (signClaim.getOwnerName().equalsIgnoreCase(signPlayer.getName())) {
         		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
-          		  signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this claim!");
+          		  signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this claim! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
             } else {
         		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
           		  signPlayer.sendMessage(ChatColor.RED + "ERROR: " + ChatColor.AQUA + "Cannot purchase claim!");
@@ -274,7 +272,7 @@ public class GPREListener
             
             event.getClickedBlock().breakNaturally();
   		    signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
-  		    signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this subclaim!");
+  		    signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this subclaim! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
           }
         }
       }
