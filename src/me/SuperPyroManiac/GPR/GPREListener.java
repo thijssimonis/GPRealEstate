@@ -1,5 +1,9 @@
 package me.SuperPyroManiac.GPR;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import me.ryanhamshire.GriefPrevention.Claim;
 import me.ryanhamshire.GriefPrevention.ClaimPermission;
 import me.ryanhamshire.GriefPrevention.GriefPrevention;
@@ -26,28 +30,30 @@ public class GPREListener
   {
     this.plugin = plugin;
   }
-
+  DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+  //get current date time with Date()
+  Date date = new Date();
   public void registerEvents()
   {
     PluginManager pm = this.plugin.getServer().getPluginManager();
     pm.registerEvents(this, this.plugin);
   }
 
-// @EventHandler
-// public void onSignBreak(BlockBreakEvent event)
-// {
-//	  Player signPlayer = event.getPlayer();
-//	  Block b = event.getBlock();
-//     Material type = b.getType();
-//      if ((type == Material.SIGN_POST) || (type == Material.WALL_SIGN)){
-//      Sign sign = (Sign)event.getBlock();
-//
-//      if ((sign.getLine(0).equalsIgnoreCase(this.plugin.signName)) || (sign.getLine(0).equalsIgnoreCase(this.plugin.signNameLong))){
-//    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
-//      		signPlayer.sendMessage(ChatColor.AQUA + "Claim is no longer for sale.");    	  
-//      }
-//    }  
-//  }
+/* @EventHandler
+ public void onSignBreak(BlockBreakEvent event)
+ {
+	  Player signPlayer = event.getPlayer();
+	  Block b = event.getBlock();
+     Material type = b.getType();
+      if ((type == Material.SIGN_POST) || (type == Material.WALL_SIGN)){
+      Sign sign = (Sign)event.getBlock();
+
+      if ((sign.getLine(0).equalsIgnoreCase(this.plugin.signName)) || (sign.getLine(0).equalsIgnoreCase(this.plugin.signNameLong))){
+    		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
+      		signPlayer.sendMessage(ChatColor.AQUA + "Claim is no longer for sale.");    	  
+      }
+    }  
+  }*/
 
   @EventHandler
   public void onSignChange(SignChangeEvent event)
@@ -104,6 +110,7 @@ public class GPREListener
           event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
   		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
   		signPlayer.sendMessage(ChatColor.AQUA + "This caim is now for sale! Price: " + ChatColor.GREEN + signCost + " " + GPRealEstate.econ.currencyNamePlural());
+  		GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has made a claim for sale at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
         }
         else
         {
@@ -128,6 +135,7 @@ public class GPREListener
         event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
 		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
   		signPlayer.sendMessage(ChatColor.AQUA + "This sublcaim is now for lease! Price: " + ChatColor.GREEN + signCost + " " + GPRealEstate.econ.currencyNamePlural());
+  		GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has made a subclaim for lease at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
       }
       else if ((signClaim.parent.isAdminClaim()) && (signPlayer.hasPermission("GPRealEstate.Adminclaim")))
       {
@@ -137,6 +145,7 @@ public class GPREListener
         event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
 		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
   		signPlayer.sendMessage(ChatColor.AQUA + "This admin sublcaim is now for lease! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
+  		GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has made an admin subclaim for lease at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
       }
       else
       {
@@ -252,6 +261,7 @@ public class GPREListener
             if (signClaim.getOwnerName().equalsIgnoreCase(signPlayer.getName())) {
         		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
           		  signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this claim! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
+          		GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has purchased a claim at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
             } else {
         		  signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
           		  signPlayer.sendMessage(ChatColor.RED + "ERROR: " + ChatColor.AQUA + "Cannot purchase claim!");
@@ -273,6 +283,7 @@ public class GPREListener
             event.getClickedBlock().breakNaturally();
   		    signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
   		    signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this subclaim! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
+  		  GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has purchased a subclaim at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
           }
         }
       }

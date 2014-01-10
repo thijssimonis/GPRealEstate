@@ -1,5 +1,9 @@
 package me.SuperPyroManiac.GPR;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Logger;
 
 import net.milkbowl.vault.economy.Economy;
@@ -49,6 +53,31 @@ public class GPRealEstate extends JavaPlugin
     this.log.info("RealEstate Signs have been set to use " + this.signName + " or " + this.signNameLong);
     saveConfig();
   }
+  
+  
+  public static void logtoFile(String message)
+  {
+      try
+      {
+          File saveTo = new File("plugins/GPRealEstate/GPRealEstate.log");
+          if (!saveTo.exists())
+          {
+              saveTo.createNewFile();
+          }
+          FileWriter fw = new FileWriter(saveTo, true);
+          PrintWriter pw = new PrintWriter(fw);
+          pw.println(message);
+          pw.flush();
+          pw.close();
+
+      } catch (IOException e)
+      {
+          e.printStackTrace();
+      }
+
+  }
+  
+	
 
   private boolean checkVault()
   {
