@@ -134,7 +134,7 @@ public class GPREListener
         event.setLine(2, signPlayer.getName());
         event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
 		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
-  		signPlayer.sendMessage(ChatColor.AQUA + "This sublcaim is now for lease! Price: " + ChatColor.GREEN + signCost + " " + GPRealEstate.econ.currencyNamePlural());
+  		signPlayer.sendMessage(ChatColor.AQUA + "This subclaim is now for lease! Price: " + ChatColor.GREEN + signCost + " " + GPRealEstate.econ.currencyNamePlural());
   		GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has made a subclaim for lease at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
       }
       else if ((signClaim.parent.isAdminClaim()) && (signPlayer.hasPermission("GPRealEstate.Adminclaim")))
@@ -144,7 +144,7 @@ public class GPREListener
         event.setLine(2, "Server");
         event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
 		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
-  		signPlayer.sendMessage(ChatColor.AQUA + "This admin sublcaim is now for lease! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
+  		signPlayer.sendMessage(ChatColor.AQUA + "This admin subclaim is now for lease! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
   		GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has made an admin subclaim for lease at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
       }
       else
