@@ -129,6 +129,8 @@ public class GPREListener
 
       }
       else if ((signPlayer.getName().equalsIgnoreCase(signClaim.parent.getOwnerName())) || (signClaim.isManager(signPlayer.getName()))) {
+    	  if ((signClaim.isAdminClaim()) && (signPlayer.hasPermission("GPRealEstate.sellsub"))){
+    		  
         event.setLine(0, this.plugin.signNameLong);
         event.setLine(1, ChatColor.GREEN + "FOR LEASE");
         event.setLine(2, signPlayer.getName());
@@ -136,6 +138,11 @@ public class GPREListener
 		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
   		signPlayer.sendMessage(ChatColor.AQUA + "This subclaim is now for lease! Price: " + ChatColor.GREEN + signCost + " " + GPRealEstate.econ.currencyNamePlural());
   		GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has made a subclaim for lease at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
+      }
+    	  else {
+    			signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
+    	  		signPlayer.sendMessage(ChatColor.AQUA + "You do not have permission to sell subclaims! (GPRealEstate.sellsub)");
+    	  }
       }
       else if ((signClaim.parent.isAdminClaim()) && (signPlayer.hasPermission("GPRealEstate.Adminclaim")))
       {
@@ -274,6 +281,10 @@ public class GPREListener
 
           if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR LEASE") || sign.getLine(1).equalsIgnoreCase("FOR LEASE"))
           {
+        	  
+        	  if (!GPRealEstate.perms.has(signPlayer, "GPRealEstate.buysub")) {
+        		  
+        	 
             signClaim.clearPermissions();
             signClaim.clearManagers();
             signClaim.addManager(signPlayer.getName());
@@ -284,6 +295,11 @@ public class GPREListener
   		    signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
   		    signPlayer.sendMessage(ChatColor.AQUA + "You have successfully purchased this subclaim! Price: " + ChatColor.GREEN + signCost + GPRealEstate.econ.currencyNamePlural());
   		  GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has purchased a subclaim at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
+          }
+        	  else {
+        		    signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
+          		    signPlayer.sendMessage(ChatColor.AQUA + "You do not have permission to buy subclaims! (GPRealEstate.buysub)");
+        	  }
           }
         }
       }
