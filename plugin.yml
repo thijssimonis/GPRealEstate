@@ -1,6 +1,6 @@
 name: GPRealEstate
 main: me.SuperPyroManiac.GPR.GPRealEstate
-version: 1.5
+version: 1.4
 author: SuperPyroManiac
 depend: [GriefPrevention, Vault]
 
