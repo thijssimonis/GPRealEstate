@@ -109,7 +109,7 @@ public class GPREListener
           event.setLine(2, signPlayer.getName());
           event.setLine(3, signCost + " " + GPRealEstate.econ.currencyNamePlural());
   		signPlayer.sendMessage(ChatColor.BLUE + "-------=" + ChatColor.GOLD + "GPRealEstate" + ChatColor.BLUE + "=-------");
-  		signPlayer.sendMessage(ChatColor.AQUA + "This caim is now for sale! Price: " + ChatColor.GREEN + signCost + " " + GPRealEstate.econ.currencyNamePlural());
+  		signPlayer.sendMessage(ChatColor.AQUA + "This claim is now for sale! Price: " + ChatColor.GREEN + signCost + " " + GPRealEstate.econ.currencyNamePlural());
   		GPRealEstate.logtoFile("[" + dateFormat.format(date) + "] " + signPlayer.getName() + " Has made a claim for sale at [" + signPlayer.getLocation().getWorld() + ", X: " + signPlayer.getLocation().getBlockX() + ", Y: " + signPlayer.getLocation().getBlockY() + ", Z: " + signPlayer.getLocation().getBlockZ() +  "] Price: " + signCost + " " + GPRealEstate.econ.currencyNamePlural());
         }
         else
