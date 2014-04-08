@@ -129,7 +129,7 @@ public class GPREListener
 
       }
       else if ((signPlayer.getName().equalsIgnoreCase(signClaim.parent.getOwnerName())) || (signClaim.isManager(signPlayer.getName()))) {
-    	  if ((signClaim.isAdminClaim()) && (signPlayer.hasPermission("GPRealEstate.sellsub"))){
+    	  if (signPlayer.hasPermission("GPRealEstate.sellsub")){
     		  
         event.setLine(0, this.plugin.signNameLong);
         event.setLine(1, ChatColor.GREEN + "FOR LEASE");
@@ -258,6 +258,8 @@ public class GPREListener
           if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR SALE") || sign.getLine(1).equalsIgnoreCase("FOR SALE"))
           {
             try {
+              signClaim.clearPermissions();
+              signClaim.clearManagers();                	
               gp.dataStore.changeClaimOwner(signClaim, signPlayer.getName());
             }
             catch (Exception e) {
