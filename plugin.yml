@@ -13,11 +13,17 @@ permissions:
       GPRealEstate.buy: true
       GPRealEstate.Adminclaim: true
   GPRealEstate.sell:
-    description: Allows player to sell claims and subclaims.
+    description: Allows player to sell claims.
     default: true
   GPRealEstate.buy:
-    description: Allows player to buy claims and lease subclaims.
+    description: Allows player to buy claims.
     default: true
   GPRealEstate.Adminclaim:
     description: Allows players to sell admin claims
     default: false
+  GPRealEstate.sellsub:
+    description: Allows player to sell subclaims.
+    default: true
+  GPRealEstate.buysub:
+    description: Allows player to buy subclaims.
+    default: true
