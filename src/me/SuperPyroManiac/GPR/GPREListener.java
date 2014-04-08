@@ -208,7 +208,6 @@ public class GPREListener
           	  signPlayer.sendMessage(ChatColor.AQUA + "You already own this claim!");
           	  return;
             }
-
           }
           else
           {
@@ -225,7 +224,11 @@ public class GPREListener
           		  signPlayer.sendMessage(ChatColor.AQUA + "You already own this claim!");
               return;
             }
-
+            if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR SALE") || sign.getLine(1).equalsIgnoreCase("FOR SALE")) {
+            	signPlayer.sendMessage(ChatColor.RED + "ERROR: " + ChatColor.AQUA + "Misplaced sign!");
+            	event.getClickedBlock().setType(Material.AIR); 
+            	return;
+            }
           }
 
           String[] signDelimit = sign.getLine(3).split(" ");
