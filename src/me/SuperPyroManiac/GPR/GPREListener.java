@@ -255,16 +255,20 @@ public class GPREListener
 
           }
 
-          if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR SALE") || sign.getLine(1).equalsIgnoreCase("FOR SALE"))
-          {
+          if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "FOR SALE") || sign.getLine(1).equalsIgnoreCase("FOR SALE")) {
             try {
-              signClaim.clearPermissions();
-              signClaim.clearManagers();                	
-              gp.dataStore.changeClaimOwner(signClaim, signPlayer.getName());
+            	for (Claim child : signClaim.children) {
+            		child.clearPermissions();
+            		child.clearManagers();
+            	}
+            	
+            	signClaim.clearPermissions();
+            	signClaim.clearManagers();                	
+            	gp.dataStore.changeClaimOwner(signClaim, signPlayer.getName());
             }
             catch (Exception e) {
-              e.printStackTrace();
-              return;
+            	e.printStackTrace();
+            	return;
             }
 
             if (signClaim.getOwnerName().equalsIgnoreCase(signPlayer.getName())) {
